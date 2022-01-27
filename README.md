@@ -3,7 +3,7 @@
 VaxTodo:re is a command line platform made for apppointments to make appointment scheduling more efficient for employees and volunteers.
 This application is a working prototype made to test the functionalities and exploring the logic behind our system.
 
-![Main Menu](loginAndMenu.png)
+![Main Menu](mainMenu.png)
 
 ## Table of content
 
@@ -86,7 +86,9 @@ Format of this list: - Functionality (who can access it)
 
 ## Screenshots
 
-![Exemple](exempleTask.png)
+![Login and Main Menu (Employee)](loginAndMenu.png)
+
+![Example](exampleTask.png)
 
 ## Menu format and feature acces
 
