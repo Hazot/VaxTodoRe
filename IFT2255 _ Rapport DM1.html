@@ -1,0 +1,1318 @@
+<!DOCTYPE html>
+<!-- saved from url=(0063)http://www-ens.iro.umontreal.ca/~lafontle/ift2255/template.html -->
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IFT2255 | Rapport DM3</title>
+    <link rel="shortcut icon" href="http://www-ens.iro.umontreal.ca/~lafontle/ift2255/images/favicon.ico"type="image/x-icon">
+    <link rel="stylesheet" href="./styles/style.css">
+    <link rel="stylesheet" href="./styles/normalize.css">
+    <link rel="stylesheet" href="./styles/base.css">
+</head>
+
+<body>
+    <header class="report-header">
+        <div class="title-section">
+            <h1 class="report-title">Rapport du livrable 3 - VaxTodo:re</h1>
+            <p class="report-summary">
+                Ce livrable se concentre la création et l'implémentation d'un interface VaxTodo:re pour l'initiative
+                VaxTodo. Cette initiative permet de gérer les rendez-vous, les employés et les bénévoles par rapport à
+                la campagne de vaccination de GoodPeople. Voici un rapport sur notre compréhension du domaine, les
+                exigences de notre client, notre méthodologie et nos premières analyses.
+            </p>
+        </div>
+
+        <div class="team-section">
+            <h2 class="team-title">Notre équipe</h2>
+            <ul class="bare-list members">
+                <li class="member">
+                    <img class="member-pic" src="./images/mendel.jpg" alt="Mendel">
+                    <div class="member-identification">
+                        <span class="member-name">Mendel SUN</span>
+                        <span class="member-id">20074113</span>
+                    </div>
+                    <a href="mailto:mendel.sun@umontreal.ca">mendel.sun@umontreal.ca</a>
+                    <span class="member-role">Responsable du projet</span>
+                </li>
+                <li class="member">
+                    <img class="member-pic" src="./images/kevin.png" alt="Kevin">
+                    <div class="member-identification">
+                        <span class="member-name">Kevin LESSARD</span>
+                        <span class="member-id">20158220</span>
+                    </div>
+                    <a href="mailto:kevin.lessard@umontreal.ca">kevinlessard@umontreal.ca</a>
+                    <span class="member-role">Chargé de projet</span>
+                </li>
+                <li class="member">
+                    <img class="member-pic" src="./images/antoine.jpg" alt="Antoine">
+                    <div class="member-identification">
+                        <span class="member-name">Antoine HO</span>
+                        <span class="member-id">20202790</span>
+                    </div>
+                    <a href="mailto:antoine.ho@umontreal.ca">antoine.ho@umontreal.ca</a>
+                    <span class="member-role">Chargé de projet</span>
+                </li>
+            </ul>
+        </div>
+    </header>
+    <main class="report-body">
+        <aside class="report-aside">
+            <div class="sidebar">
+                <nav>
+                    <ul class="bare-list nav">
+                        <li class="nav-item">
+                            <a class="nav-item__link" href="#cadre">Cadre du projet et plan</a> 
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-item__link" href="#domain">Compréhension du domaine</a> 
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-item__link" href="#model">Modélisation du domaine</a> 
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-item__link" href="#analyse">Analyse</a> 
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-item__link" href="#conception">Conception</a> 
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-item__link" href="#implémentation">Implémentation</a> 
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-item__link" href="#test">Tests</a> 
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-item__link" href="#annexe">Annexe</a> 
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </aside>
+        <div class="report-main">
+            <section>
+                <h2 id="cadre" class="section-title">Cadre du projet</h2>
+                <h3>Contexte</h3>
+                <p>Depuis le développement du vaccin de la COVID-19, GoodPeople, un organisme à but non lucratif, prête
+                    main-forte au gouvernement Canadien pour la campagne de vaccination. Présentement, GoodPeople offre
+                    4 services: la prise de vaccin, le suivi futur de la 2e dose de vaccin, la preuve de vaccination et
+                    le changement/annulation/prise de rendez-vous.
+                </p>
+                <h3>Problèmes à résoudre</h3>
+                <p>Voici les deux problèmes à résoudre qui encombrent GoodPeople. Tout d’abord, les dates fixées avec
+                    les clients ne sont pas garanties, et par conséquent, les clients se présentent pour potentiellement
+                    repartir sans avoir été vacciné et cela peut amener la frustration des clients et une perte de
+                    confiance au système de GoodPeople. Puis, à la suite de la première dose de vaccination, la prise de
+                    rendez-vous pour la deuxième dose se fait dans un intervalle de temps trop long. Cela peut créer des
+                    délais dans la campagne de vaccination.</p>
+
+                <h3>Portée</h3>
+                <P>Cette problématique touche toutes les personnes locales de 18 ans et plus qui veulent se faire
+                    vacciner et les employés et bénévoles de VaxTodo et de GoodPeople ainsi que les professionnels de la
+                    santé.</P>
+                <br>
+                <h2>Répartition des tâches</h2>
+                <h4>Kevin Lessard</h4>
+                <ul>
+                    <li>Comprendre la problématique et les besoins du clients (Scénario)</li>
+                    <li>Préparer des entrevues et poser des questions au client pour plus de clarté</li>
+                    <li>Définir les exigences (besoins fonctionnels/non fonctionnels, volontés)</li>
+                    <li>Créer des cas d’utilisation</li>
+                    <li>Créer les prototypes</li>
+                    <li>Évaluer les risques</li>
+                    <li>Création du glossaire</li>
+                    <li>Créer les diagrammes d'activités</li>
+                    <li>Créer le prototype fonctionnels</li>
+                    <li>Écrire des tests unitaires</li>
+                    <li>Écrire la documentation</li>
+
+                </ul>
+                <h4>Mendel Sun</h4>
+                <ul>
+                    <li>Comprendre la problématique et les besoins du clients (Scénario)</li>
+                    <li>Préparer des entrevues et poser des questions au client pour plus de clarté</li>
+                    <li>Définir les exigences (besoins fonctionnels/non fonctionnels, volontés)</li>
+                    <li>Créer les prototypes</li>
+                    <li>Créer des cas d’utilisation</li>
+                    <li>Définir les hypothèses</li>
+                    <li>Création de l'échéancier et des tâches</li>
+                    <li>Mettre à jour l'analyse</li>
+                    <li>Créer les besoins matériels</li>
+                    <li>Créer les contraintes physiques et conceptuelles</li>
+                    <li>Créer le diagramme de séquence</li>
+                    <li>Écrire des tests unitaires</li>
+                    <li>Coder l'implementation du système</li>
+                </ul>
+                <h4>Antoine Ho</h4>
+                <ul>
+                    <li>Comprendre la problématique et les besoins du clients (Scénario)</li>
+                    <li>Préparer des entrevues et poser des questions au client pour plus de clarté</li>
+                    <li>Définir les exigences (besoins fonctionnels/non fonctionnels, volontés)</li>
+                    <li>Créer des cas d’utilisation</li>
+                    <li>Créer les prototypes</li>
+                    <li>Répartition des tâches</li>
+                    <li>Trier les tâches par ordre de priorité</li>
+                    <li>Créer le diagramme de classe</li>
+                    <li>Créer le diagramme de séquence</li>
+                    <li>Écrire des tests unitaires</li>
+                    <li>Coder l'implémentation du système</li>
+                </ul>
+
+                <h2>Échéancier 2021 Automne</h2>
+                <p><b>Semaine 1 (12 septembre - 18 septembre)</b> </p>
+                <p>Création du projet dans github, première compréhension du projet, formulation de questions à envoyer
+                    à GoodPeople pour la semaine 2.
+                </p>
+                <p><b>Semaine 2 (19 septembre - 25 septembre)</b></p>
+                <p>Envoies des 5 premières questions à GoodPeople, deuxième compréhension du projet, formulation de
+                    questions à envoyer à GoodPeople pour la prochaine semaine, répartition des tâches, écrire le
+                    contexte, écrire les problèmes à résoudre, écrire la portée</p>
+                <p><b>Semaine 3 (26 septembre - 2 octobre)</b></p>
+                <p>Troisième compréhension du projet, envoyer les 3 premières questions à GoodPeople , définir la
+                    priorisation des tâches, écrire les hypothèses, identifier le vocabulaire intéressant (glossaire) et
+                    commencer à penser aux cas d’utilisations et aux besoins.
+                </p>
+                <p><b>Semaine 4 (3 octobre - 9 octobre)</b></p>
+                <p>Quatrième compréhension du projet, définir les besoins fonctionnels (cas d’utilisation et scénarios),
+                    définir les besoins non-fonctionnels et finir les prototypes, évaluer les risques</p>
+                <p><b>Semaine 5 (10 octobre - 16 octobre)</b></p>
+                <p>Comprendre les nouveaux besoins du client</p>
+                <p><b>Semaine 6 (17 octobre - 23 octobre)</b></p>
+                <p>Ajustement du projet pour corriger les erreurs survenu au projet</p>
+                <p><b>Semaine 7 (24 octobre - 30 octobre)</b></p>
+                <p>Définir les besoins matériels, contraintes physiques et conceptuelles, commencer diagramme d'activités</p>
+                <p><b>Semaine 8 (31 octobre - 6 novembre)</b></p>
+                <p>Finaliser diagramme d'activités, faire le diagramme de classe et diagramme de séquences</p>
+                <p><b>Semaine 9 (7 novembre - 13 novembre)</b></p>
+                <p>Finaliser prototype fonctionnel (implémentation)</p>
+                <p><b>Semaine 10 (14 novembre - 21 novembre)</b></p>
+                <p>Re-travailler sur le prototype fonctionnel (implémentation)</p>
+                <p><b>Semaine 11 (22 novembre - 29 novembre)</b></p>
+                <p>Ajouter les fonctionalités du prototype</p>
+                <p><b>Semaine 12 (30 novembre - 6 decembre)</b></p>
+                <p>Continuer à implémenter les fonctionalités</p>
+                <p><b>Semaine 13 (7 decembre - 14 decembre)</b></p>
+                <p>Écrire la documentation et les tests unitaires</p>
+                <p><b>Semaine 14 (15 decembre - 19 decembre)</b></p>
+                <p>Finaliser le rapport et génération des fichiers nécessaires</p>
+    
+
+                <h2>Priorisation des tâches</h2>
+                <h3>Essentielle:</h3>
+                <ul>
+                    <li>Comprendre la problématique et les besoins du clients</li>
+                    <li>Préparer des entrevues et poser des questions au client pour plus de clarté</li>
+                    <li>Créer les cas d’utilisation</li>
+                    <li>Créer les scénarios</li>
+                    <li>Besoins matériels</li>
+                    <li>Contraintes physiques et conceptuelles</li>
+                    <li>Créer le diagramme de classes</li>
+                    <li>Créer le prototype fonctionnel</li>
+                    <li>Implémenter le prototype fonctionnel</li>
+
+                </ul>
+                <h3>Nécessaire:</h3>
+                <ul>
+                    <li>Définir les exigences (besoins fonctionnels/non fonctionnels, volontés)</li>
+                    <li>Création du glossaire</li>
+                    <li>Création de l'échéancier et des tâches</li>
+                    <li>Créer les prototypes</li>
+                    <li>Créer les diagrammes d'activités</li>
+                    <li>Créer le diagrammes de séquences</li>
+                    <li>Écrire tests unitaires</li>
+                </ul>
+                <h3>Importante:</h3>
+                <ul>
+                    <li>Trier les tâches par ordre de priorité</li>
+                    <li>Évaluer les risques</li>
+                    <li>Répartition des tâches</li>
+                    <li>Définir les hypothèses</li>
+                    <li>Écrire la documentation</li>
+                </ul>
+                <br>
+
+                <h2>Échange avec le client</h2>
+                <h3>Rencontre 1:</h3>
+                <h5>Question 1: À part pour le suivi pour les futures doses, quelles sont les autres requêtes liées
+                    à la vaccination?</h5>
+                <p>"[...] telles qu'une demande de preuve de vaccination ou une demande de changement ou
+                    d'annulation d'un rendez-vous."</p>
+                <h5>Question 2: Quelles sont les plages horaires de vaccination disponibles qu'une personne peut
+                    sélectionner pendant une journée?</h5>
+                <p>"[...] de 8h à 18h."</p>
+                <h5>Question 3: Combien de temps faut-il minimum entre les deux doses de vaccination? (permet
+                    d'ajouter une contrainte de temps)</h5>
+                <p>"Si oui, l'employé utilise le calendrier de rendez-vous pour choisir une date qui convient au
+                    visiteur dans un délai minimum d'un mois."</p>
+                <h5>Question 4: Quelle est la durée des tranches de temps disponible pendant une journée au client
+                    pour choisir? (10 min? 30 min?)</h5>
+                <p>"[...] correspondant à une plage horaire (8h, 9h, 10h...17h)."</p>
+                <h5>Question 5: Quelle est la capacité maximale d'accommodation de clients pour chaque tranche de
+                    temps?</h5>
+                <p>"une plage horaire est limité à 15 rendez-vous."</p>
+                <h3>Rencontre 2:</h3>
+                <h5>Question 1: Est-ce que les vaccinateurs, chargeurs et injecteurs sont la même personne? Si non,
+                    quelles sont leurs différences?</h5>
+                <p>"Les vaccinateurs, chargeurs et injecteurs sont des exemples de professionnel de la santé"</p>
+                <h5>Question 2: Le vaccin est contre quoi exactement?</h5>
+                <p>"Le vaccin est contre la Covid-19"</p>
+            </section>
+            <br><br>
+            <hr><br><br>
+            <section>
+                <h2 id="domain" class="section-title">Définition du domaine</h2>
+                <p>Notre analyse préliminaire nous a permis de tracé un bon portrait du travail à faire et des
+                    exigences à respecter.
+                </p><br>
+                <div>
+                    <h2>Hypothèses</h2>
+                    <ol class="risks">
+                        <li>S’il y a une interruption d’un cas d’utilisation, l’agent peut revenir au menu principal
+                            n’importe quand.</li>
+                        <li>Le numéro permet de reconnaître si la personne est un visiteur, un bénévole ou un employé.
+                        </li>
+                        <li>Les ordinateurs et la solution de stockage de fichiers sont compris d’avance dans le
+                            système.</li>
+                        <li>S’il y a une interruption d’un cas d’utilisation, l’employé peut toujours retourner au menu
+                            principal ou mettre fin au cas d’utilisation en cours.</li>
+                    </ol>
+                </div><br>
+                <div>
+                    <h2>Glossaire</h2>
+                    <dl class="glossary">
+                        <dt>GoodPeople</dt>
+                        <dd>Organisme à but non lucratif qui prête main-forte à la campagne de vaccination du
+                            Gouvernement.</dd>
+
+                        <dt>VaxTodo</dt>
+                        <dd>Initiative permettant la prise de rendez-vous pour vaccination avec GoodPeople.</dd>
+
+                        <dt>VaxTodo:re</dt>
+                        <dd>Système d’information manipulé par les employés de VaxTodo pour gérer requêtes liées à la
+                            vaccination.</dd>
+
+                        <dt>Visiteurs</dt>
+                        <dd>Personne âgée de 18 ans et plus qui demande un service lié à la vaccination de la
+                            COVID-19.</dd>
+
+                        <dt>Employés</dt>
+                        <dd>Personnes qui font les traitements de dossier à l’aide de la plateforme VaxTodo:re.</dd>
+
+                        <dt>Supérieur</dt>
+                        <dd>Employé avec plus de privilèges.</dd>
+
+                        <dt>Bénévoles</dt>
+                        <dd>Personnes volontaires qui accueillent les individus voulant se faire vacciner et les
+                            acheminement vers les employés.</dd>
+
+                        <dt>Professionnel de la santé</dt>
+                        <dd>Fournisseur volontaire de service de santé (vaccinateur, chargeur, injecteur, etc.) aux
+                            clients.</dd>
+
+                        <dt>Vaccin</dt>
+                        <dd>Substance immunisante (contre la COVID-19) identifiée par un nom, un code et un lot qui
+                            sera reçu par un client.</dd>
+
+                        <dt>Carte d’assurance maladie</dt>
+                        <dd>Carte strictement confidentielle nécessaire pour l’identification du visiteur auprès des
+                            professionnels de la santé.</dd>
+
+                        <dt>Informations personnelles</dt>
+                        <dd>Informations fournies par les clients pour identifier le client
+                            lors de la réservation/confirmation/annulation d’un rendez-vous ou pour la demande de
+                            preuve de vaccination.</dd>
+
+                        <dt>Numéro de réservation unique</dt>
+                        <dd>Numéro permettant à un visiteur d'identifié son rendez-vous.</dd>
+
+                        <dt>Numéro de visiteur</dt>
+                        <dd>Numéro unique à 12 chiffres lors de la création d’un compte qui est rattaché à l’adresse
+                            courriel unique du visiteur et ses informations personnelles.</dd>
+
+                        <dt>Code d’employé</dt>
+                        <dd>Numéro à 9 chiffres permettant d’identifier un employé et qui est nécessaire pour
+                            accéder au système.</dd>
+
+                        <dt>Mot de passe</dt>
+                        <dd>Chaîne de caractère composé d’au moins 8 caractères contenant au moins 1 chiffre,
+                            1 majuscule, 1 minuscule et 1 caractère spécial.</dd>
+
+                        <dt>Preuve de vaccination</dt>
+                        <dd>Document PDF présentant le nom, la date de naissance, le code QR et la liste de vaccins
+                            administrés permettant d’assurer le statut de protection d’une personne.</dd>
+
+                        <dt>Rendez-vous</dt>
+                        <dd>Période de rencontre garantie décidée 72 heures à l’avance entre 8h et 18h du
+                            lundi ou vendredi (excluant les jours fériés).</dd>
+
+                        <dt>Visite spontanée</dt>
+                        <dd>Visiteur qui se présente à la clinique sans rendez-vous.</dd>
+
+                        <dt>Visite planifiée</dt>
+                        <dd>Visiteurs qui ont un rendez-vous et qui sont assurés d’avoir accès à une
+                            dose à l’heure et la journée prévue.</dd>
+
+                        <dt>Questionnaire</dt>
+                        <dd>Une série de questions sur les informations personnelles du visiteur, pour
+                            comprendre leur interactions présentes avec la COVID-19 et le vaccin voulu.</dd>
+
+                        <dt>Calendrier de rendez-vous</dt>
+                        <dd>Tableau des jours et des heures de rendez-vous possibles et des
+                            visites planifiées utilisé par un employé dans le système VaxTodo:re.</dd>
+
+                        <dt>Billet numérotés</dt>
+                        <dd>Papier unique quotidien lié à un visiteur utilisé par les professionnels
+                            de la santé pour appeler le visiteur pour la prise de vaccin.</dd>
+
+                        <dt>Base de données</dt>
+                        <dd>Information sur les employés, les bénévoles, les visiteurs et tout le
+                            système VaxTodo:re stocké localement sur des ordinateurs Windows.</dd>
+
+                        <dt>Planification de rendez-vous</dt>
+                        <dd>Réservation par téléphone d’une plage horaire d’une journée disponible pour la
+                            vaccination.</dd>
+
+                        <dt>Annulation de rendez-vous</dt>
+                        <dd>Action d'un employé qui accède à la liste de rendez-vous pour supprimer la rencontre.</dd>
+
+                        <dt>Confirmation de présence</dt>
+                        <dd>Vérification faite par le bénévole et l’employé par demande de nom
+                            et heure de rendez-vous (ou heure de visite si visite spontanée)</dd>
+
+                        <dt>Confirmation de rendez-vous par téléphone</dt>
+                        <dd>Appel téléphonique de confirmation fait par l'employé au visiteur réalisé 48h avant son
+                            rendez-vous.</dd>
+
+                        <dt>Suivi</dt>
+                        <dd>Envoi de courriel des détails de leur visite et de la preuve de vaccination en PDF.</dd>
+
+                        <dt>Demande de preuve de vaccination</dt>
+                        <dd>Enquête faite à l’agent qui accède par le système pour
+                            accéder à la base de données et donner la preuve de vaccination au visiteur.</dd>
+
+                        <dt>Gestion des comptes</dt>
+                        <dd>Consultations ou requêtes par rapport aux comptes visiteurs, bénévoles
+                            ou employés; changement de statut par rapport aux doses reçus.</dd>
+
+                        <dt>Création de comptes employés</dt>
+                        <dd>Action d’un employé qui crée un compte dans le système pour un
+                            employé avec un code d’employé et un mot de passe lui permettant d’accéder au système
+                            VaxTodo:re.</dd>
+
+                        <dt>Création de comptes visiteurs</dt>
+                        <dd>Action d’un employé qui crée un compte dans le système pour
+                            un visiteur après qu’il ait confirmé ses informations et qu’il est éligible pour le vaccin
+                            lors d'une première visite.</dd>
+                        <dt>Local</dt>
+                        <dd>Le local de réservation de GoodPeople pour la vaccination.</dd>
+                        <dt>Traitement du dossier</dt>
+                        <dd>Action effectuée par les employés pour le compte d'un visiteur.</dd>
+                        <dt>Équipe</dt>
+                        <dd>Une composition d'employés et bénévoles.</dd>
+                        <dt>Compte</dt>
+                        <dd>Une compte créer pour le visiteur par l'employé qui sera rattaché à toutes ces activités : vaccins et réservations.</dd>
+                        <dt>Mise à jour du profil de vaccination</dt>
+                        <dd>Le profil de vaccination qui à un ajout d'information concernant la vaccination du visiteur</dd>
+                    </dl>
+                </div><br>
+                <h2>Exigences</h2>
+                <div>
+                    <h3>Besoins fonctionnels</h3>
+                    <p>L'employé doit pouvoir:</p>
+                    <ol class="risks">
+                        <li>Annuler des rendez-vous</li>
+                        <li>Ajouter des rendez-vous</li>
+                        <li>Fournir preuve de vaccination</li>
+                        <li>Mettre à jour les informations personnelles des visiteurs ou ajouter les vaccins reçus</li>
+                        <li>Créer un compte visiteur</li>
+                        <li>Créer un compte employé</li>
+                        <li>Envoyer un suivi par adresse courriel aux visiteurs</li>
+                        <li>Accéder au calendrier pour voir les disponibilités (Gérer les rendez-vous)</li>
+                        <li>Accéder au calendrier pour imprimer les rendez-vous de la journée même</li>
+                        <li>Se connecter au système VaxTodo:re</li>
+                        <li>Consulter la liste des visiteurs et bénévoles</li>
+                    </ol>
+                </div>
+                <div>
+                    <h3>Besoins non-fonctionnelles</h3>
+                    <ul class="nf-requirements">
+                        <li>Intuitif: Le système doit être facile à comprendre, à apprendre et à utiliser par les
+                            employés.</li>
+                        <li>Utilisabilité: Le logiciel doit être convivial et ergonomique afin de faciliter les
+                            interactions des employés.</li>
+                        <li>Esthétique: L’interface personne-machine doit avoir une apparence élégante et commode qui
+                            pourrait par exemple aider l’employé à repérer les disponibilités facilement et rapidement
+                            dans une plage horaire.</li>
+                        <li>Sécurité: Le système doit assurer la confidentialité et la sécurité des informations
+                            personnelles des comptes et de tout le système.</li>
+                        <li>Temps de réponse: L’interface doit être rapide: il ne devrait pas y avoir de latence entre
+                            les différentes vues (fenêtres) et les entrées de l’employé.</li>
+                        <li>Performance: L’ajout de rendez-vous d’un employé doit se retrouver dans la base de données
+                            rapidement pour bloquer la plage horaire et ne pas créer de conflit de rendez-vous.</li>
+                        <li>Maintenabilité/adaptabilité: Le système doit être codé clairement et de façon à facilement
+                            s'accommoder aux changements et ajouter des nouvelles fonctions.</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Risques</h3>
+                    <ol class="risks">
+                        <li>Usurpation d’identité (Fraude) - <b>Sévère</b>, il est possible qu’une personne se présente
+                            avec les informations ainsi qu’une fausse carte d’assurance maladie à l’insu d’une autre
+                            personne.</li>
+                        <li>
+                            Absence de backup - <b>Sévère</b>, si notre système n'a aucun backup de données et que les
+                            disques durs contenant l'information des rendez-vous et des visiteurs plantent, les données
+                            vont disparaitre à jamais.
+                        </li>
+                        <li>Aucune formalité pour notifier les personnes que leur rendez-vous est annulé pour manque de
+                            ressources ou de temps - <b>Important</b>, les personnes perdent leur temps à venir à la
+                            clinique pour simplement repartir bredouille</li>
+                        <li>Manque de flexibilité dans les tâches du système - <b>Important</b>, si l’employé reste
+                            bloqué par un bug lors d’une tâche, il est possible que la tâche ne soit pas réalisable.
+                        </li>
+                        <li>Information personnelles (sécurité) <b>Important</b>, le système doit être sécuritaire pour
+                            ne pas
+                            divulger les informations des visiteurs</li>
+                        <li>Mauvaise compréhension de l’utilisation du système par l’employé - <b>Mineur</b>, il risque
+                            d’y avoir des pertes de temps pour l’apprentissage du système par un employé. Ce risque sera
+                            quand même minimisé pour les besoins du logiciel.</li>
+                    </ol>
+                </div>
+            </section>
+            <br><br>
+            <hr><br><br>
+            <section>
+                <!-- TODO: on pourrait mettre des liens a chaque CU ou mettre les cu dans des boites -->
+                <h1 id="model" class="section-title">Modélisation du domaine</h1>
+                <h2>Les cas d'utilisation</h2>
+                <h3>1. Connexion de l’employé au système</h3>
+                <h3>2. Prise de rendez-vous par téléphone</h3>
+                <h3>3. Annulation de rendez-vous par téléphone</h3>
+                <h3>4. Modification de rendez-vous par téléphone</h3>
+                <h3>5. Obtenir preuve de vaccination</h3>
+                <h3>6. Création d’un compte pour un visiteur</h3>
+                <h3>7. Création d’un compte pour un employé</h3>
+                <h3>8. Réinitialisation du mot de passe de l’employé</h3>
+                <h3>9. Envoi des rapports de vacination (suivis)</h3>
+                <h3>10. Consulter la liste des visiteurs</h3>
+                <h3>11. Consulter la liste des bénévoles</h3>  
+                <h3>12. Consulter le calendrier</h3>
+                <h3>13. Ajouter bénévole</h3>
+                <h3>14. Modifier bénévole</h3>
+                <h3>15. Supprimer bénévole</h3>
+                <h3>16. Modifier visiteur</h3>
+                <h3>17. Supprimer visiteur</h3>
+                <h3>18. Remplir formulaire</h3>
+                <h3>19. Notification de rappel</h3>
+            </section>
+            <br>
+            <br>
+            <br>
+            <p>-----------------------------------------------------------------------------------</p>
+            <section>
+                <h4>1. Connexion de l’employé au système</h4>
+                <h5>But :</h5>
+                <pre><p>L’employé veut se connecter au système.</p></pre>
+                <h5>Préconditions:</h5>
+                <pre><p>
+1. L’employé possède un compte dans le système.
+2. C’est un jour du lundi au vendredi 8h-18h EDT, excluant les jours fériés.   
+                </p></pre>
+                <h5>Acteurs:</h5>
+                <pre><p>Employé (acteur principal)</p></pre>
+                <h5>Scénario principal</h5>
+                <pre><p>
+1. L’employé se met devant un ordinateur appartenant à GoodPeople.
+2. L’employé est accueilli par une page de connexion qui lui permet d’entrer son code d’employé et son mot de passe.
+3. L’employé entre son code d’employé ainsi que son mot de passe.
+4. Le système valide les informations de l’employé.
+5. Le système confirme la connexion de l’employé.
+6. Le système affiche le menu principal.                    
+                </p></pre>
+
+                <h5>Scénario alternatif</h5>
+                <pre><p>
+3.a Appel du cas <u>réinitialisation du mot de passe de l’employé</u>.
+    3.a.1 Retour à l’étape 2
+4.a Le système rejette au moins une information écrit par l’employé
+    4.a.1 Retourne à l'étape 3
+                
+                </p></pre>
+                <h5>Postcondition:</h5>
+                <pre><p>L’employé est connecté au système et a accès au menu principal de VaxTodo:re.</p></pre>
+                <br>
+                <p>------------------------------------------------------------------------------</p>
+                <br>
+
+            </section>
+            <section>
+                <h4>2. Prise de rendez-vous par téléphone</h4>
+                <h5>But :</h5>
+                <pre><p> Un visiteur veut prendre un rendez-vous de vaccination par appel téléphonique.</p></pre>
+                <h5>Préconditions:</h5>
+                <pre><p>
+1. Le visiteur doit appeler entre 8h et 18h EDT, lundi à vendredi, excluant les jours feriés 
+2. Rendez-vous doit être pris au minimum 72 heures à l’avance de la date choisie 
+3. Le visiteur doit avoir au moins 18 ans. 
+4. Au maximum 2 employés peuvent répondre aux appels 
+5. La plage horaire de 1 heure est limité à 15 rendez-vous de vaccination
+                </p></pre>
+                <h5>Acteurs:</h5>
+                <pre><p>Visiteur(acteur principale), Employé (acteur secondaire)</p></pre>
+                <h5>Scénario principal</h5>
+                <pre><p>
+1. Le visiteur appelle la clinique de GoodPeople
+2. L’employé répond au téléphone
+3.  Appel du cas <u>connexion de l’employé au système</u>.
+4. Le visiteur communique ses disponibilités et ses informations personnelles pour prendre un rendez-vous.
+5. L’employé accède au calendrier (appel du cas <u>consulter le calendrier</u>) 
+6. L’employé vérifie les disponibilités libres de rendez-vous
+7. Le visiteur et l’employé arrivent à un consensus sur une date et un temps choisis.
+8. La réservation est effectuée dans le système par l’employé.
+9. Le système retourne un numéro de réservation unique. 
+10.Les informations concernant le rendez-vous sont acheminées au visiteur par courriel.
+11. L’employé confirme que les informations sont envoyées.
+12. Le visiteur raccroche et l’appel est terminé.     
+                </p></pre>
+
+                <h5>Scénario alternatif</h5>
+                <pre><p>
+1.a. Les employés en appel téléphonique sont occupés et ne sont pas en mesure de répondre à l’appel téléphonique
+    1.a.1 Le visiteur est mis en attente sur l’appel téléphonique.
+    1.a.2 Le scénario reprend à l'étape 2. 
+                </p></pre>
+                <h5>Postcondition:</h5>
+                <pre><p> Le visiteur a réussi à prendre son rendez-vous et le système a enregistré une nouvelle visite de vaccination pour le visiteur.</p></pre>
+                <br>
+                <p>------------------------------------------------------------------------------</p>
+                <br>
+
+            </section>
+            <section>
+                <h4>3. Annulation de rendez-vous par téléphone</h4>
+                <h5>But :</h5>
+                <pre><p>Un visiteur veut annuler son rendez-vous de vaccination par appel téléphonique.</p></pre>
+                <h5>Préconditions:</h5>
+                <pre><p>
+1. Le visiteur doit appeler entre 8h et 18h EDT lundi à vendredi, excluant les jours feriés 
+2. Le visiteur doit avoir un rendez-vous avec la clinique GoodPeople.  
+3. Au maximum 2 employés peuvent répondre aux appels 
+4. La plage horaire de 1 heure est limité à 15 rendez-vous de vaccination
+                </p></pre>
+                <h5>Acteurs:</h5>
+                <pre><p>Visiteur (acteur principale), Employé (acteur secondaire)</p></pre>
+                <h5>Scénario principal</h5>
+                <pre><p>
+1. Le visiteur appelle la clinique de GoodPeople.
+2. L’employé répond au téléphone.
+3. Appel du cas <u>connexion de l’employé au système</u>.
+4. Le visiteur lui informe qu’il désire annuler son rendez-vous.
+5. L’employé lui demande ses informations personnelles pour le retrouver dans le système.
+6. L’employé confirme la date du rendez-vous à annuler.
+7. Le visiteur confirme l’annulation du rendez-vous.
+8. L’employé annule le rendez-vous du visiteur sur le système.
+9. Le système annule le rendez-vous.
+10. L’employé confirme l’annulation du rendez-vous sur le système au visiteur.
+11. Les informations concernant l’annulation du rendez-vous sont acheminées au visiteur par courriel.
+12. Le visiteur raccroche et l’appel est terminé.    
+                </p></pre>
+
+                <h5>Scénario alternatif</h5>
+                <pre><p>
+1.a. Les employés en appel téléphonique sont occupés et ne sont pas en mesure de répondre à l’appel téléphonique
+    1.a.1 Le visiteur est mis en attente sur l’appel téléphonique.
+    1.a.2 Le scénario reprend à l'étape 2.   
+                </p></pre>
+                <h5>Postcondition:</h5>
+                <pre><p>Le visiteur annule son rendez-vous de vaccination chez GoodPeople</p></pre>
+                <br>
+                <p>------------------------------------------------------------------------------</p>
+                <br>
+
+            </section>
+            <section>
+                <h4>4. Modification de rendez-vous par téléphone</h4>
+                <h5>But :</h5>
+                <pre><p>Un visiteur veut modifier un rendez-vous de vaccination par appel téléphonique.</p></pre>
+                <h5>Préconditions:</h5>
+                <pre><p>
+1. Le visiteur doit appeler entre 8h et 18h EDT lundi à vendredi, excluant les jours feries 
+2. Le visiteur doit avoir un rendez-vous avec la clinique GoodPeople. 
+3. La date de rendez-vous doit être au minimum 72 heures à l’avance de la date choisie 
+4. Au maximum 2 employés peuvent répondre aux appels 
+5. La plage horaire de 1 heure est limité à 15 rendez-vous de vaccination
+                </p></pre>
+                <h5>Acteurs:</h5>
+                <pre><p>Visiteur(acteur principale), Employé(acteur secondaire)</p></pre>
+                <h5>Scénario principal</h5>
+                <pre><p>
+1. Le visiteur appelle la clinique de GoodPeople.
+2. L’employé répond au téléphone.
+3. Appel du cas <u>connexion de l’employé au système</u>.
+4. Le visiteur informe l’employé qu’il désire modifier la date de son rendez-vous.
+5. L’employé lui demande ses informations personnelles pour le retrouver dans le système
+6. Appel du cas <u>annulation de rendez-vous par téléphone</u>.
+7. Appel du cas <u>prise de rendez-vous par téléphone</u>.
+                </p></pre>
+
+                <h5>Scénario alternatif</h5>
+                <pre><p>
+1.a. Les employés en appel téléphonique sont occupés et ne sont pas en mesure de répondre à l’appel téléphonique
+    1.a.1 Le visiteur est mis en attente sur l’appel téléphonique.
+    1.a.2 Le scénario reprend à l'étape 2.
+                </p></pre>
+                <h5>Postcondition:</h5>
+                <pre><p>Le visiteur a modifié la date et l’heure de son rendez-vous et la date et l’heure de rendez-vous du visiteur est modifiée dans le système.</p></pre>
+                <br>
+                <p>------------------------------------------------------------------------------</p>
+                <br>
+
+            </section>
+            <section>
+                <h4>5. Obtenir preuve de vaccination</h4>
+                <h5>But :</h5>
+                <pre><p>Le visiteur veut obtenir sa preuve de vaccination par appel téléphonique.</p></pre>
+                <h5>Préconditions:</h5>
+                <pre><p>
+1. Le client a été vacciné à GoodPeople
+2. Au maximum 2 employés peuvent répondre aux appels
+3. Appel entre 8h et 18h EDT, lundi à vendredi, excluant les jours fériés
+                </p></pre>
+                <h5>Acteurs:</h5>
+                <pre><p>visiteur (acteur principal), employé (acteur secondaire)</p></pre>
+                <h5>Scénario principal:</h5>
+                <pre><p>
+1. Le visiteur appelle la clinique de GoodPeople.
+2. L’employé répond au téléphone.
+3. Appel du cas <u>connexion de l’employé au système</u>.
+4. Le visiteur communique qu’il désire obtenir sa preuve de vaccination.
+5. L’employé lui demande ses informations personnelles afin de confirmer son identité
+6. L’employé envoie par courriel la preuve de vaccination au visiteur.
+7. Le système envoie la preuve de vaccination au courriel du visiteur.
+8. Le système confirme que la preuve de vaccination a été envoyé.
+9. L’employé confirme au client que la preuve de vaccination est envoyée.
+10. Le visiteur raccroche et l’appel est terminé.                    
+                </p></pre>
+                <h5>Scénario alternatif:</h5>
+                <pre><p>
+1.a. Les employés en appel téléphonique sont occupés et ne sont pas en mesure de répondre à l’appel téléphonique
+    1.a.1 Le visiteur est mis en attente sur l’appel téléphonique.
+    1.a.2 Le scénario reprend à l'étape 2.                    
+                </p></pre>
+                <h5>Postcondition:</h5>
+                <pre><p>Le visiteur a obtenu sa preuve de vaccination par courriel.
+                </p></pre>
+                <br>
+                <p>------------------------------------------------------------------------------</p>
+                <br>
+            </section>
+            <section>
+                <h4>6. Création d’un compte pour un visiteur </h4>
+                <h5>But: </h5>
+                <pre><p>L’employé veut créer un compte pour le visiteur</p></pre>
+                <h5>Préconditions:</h5>
+                <pre><p>
+1. Le visiteur n’a pas de compte dans le système Vaxtodo:re
+2. C’est un jour du lundi au vendredi de 8h et 18h EDT, excluant les jours fériés
+3. Le visiteur a une carte d’assurance maladie valide 
+                </p></pre>
+                <h5>Acteur:</h5>
+                <pre><p>Employé (acteur principal), visiteur (acteur secondaire)</p></pre>
+                <h5>Scénario principal:</h5>
+                <pre><p>
+1. L’employé demande au visiteur s’il a déjà été vacciné chez GoodPeople
+2. Le visiteur répond qu’il n’a pas déjà été vacciné chez GoodPeople
+3. L’employé demande la carte d’assurance maladie et les informations du visiteur
+4. L’employé vérifie la carte d’assurance maladie.
+5. L’employé entre les informations du visiteur dans le système à partir des informations recueillies du rendez-vous. 
+6. Le système valide les informations
+7. Le système confirme la création du compte
+8. L’employé communique au visiteur que le compte a été créé avec succès                    
+                </p></pre>
+                <h5>Scénario alternatif:</h5>
+                <pre><p>
+2a. Le visiteur répond qu’il a déjà été vacciné chez GoodPeople
+    2a.1 La création de compte n’est pas nécessaire
+    2a.2 Le scénario est terminé.
+4a. La carte d’assurance maladie est expirée ou invalide.
+    4a.1 Le rendez-vous est annulé. 
+    4a.2. Le scénario est terminé
+5a. Le système n’accepte pas certaines informations entrées
+    5a.1 Le système demande à l’employé d’entrée à nouveau les informations dans le système
+    5a.2 Le scénario reprend à l’étape 3.                   
+                </p></pre>
+                <h5>Postcondition:</h5>
+                <pre><p>Le visiteur a un compte dans le système.</p></pre>
+                <br>
+                <p>------------------------------------------------------------------------------</p>
+                <br>
+            </section>
+            <section>
+                <h4>7. Création d’un compte pour un employé </h4>
+                <h5>But: </h5>
+                <pre><p>L’employé veut créer un compte employé dans le système</p></pre>
+                <h5>Préconditions:</h5>
+                <pre><p>
+1. L’employé n’a pas de compte dans le système
+2. Lundi au vendredi de 8h et 18h EDT, excluant les jours fériés
+                </p></pre>
+                <h5>Acteurs:</h5>
+                <pre><p>Employé (acteur principal), employé_2 (acteur secondaire)</p></pre>
+                <h5>Scénario principal:</h5>
+                <pre><p>
+1. L’employé demande à un supérieur de l'aider à créer un compte dans le système.
+2. L’employé et le supérieur se mettent devant un ordinateur appartenant à GoodPeople.
+3. L’employé et le supérieur sont accueillis par la page de connexion employée.
+4. L’employé va à la page de création de compte.
+5. L’employé entre ses informations dans le système.
+6. L'employé_2 entre son code de employé_2.
+7. Le système valide les informations.
+8. Le système confirme la création du compte.
+9. Le système retourne à la page de connexion.
+                </p></pre>
+                <h5>Scénario alternatif:</h5>
+                <pre><p>
+7a. Le système n’accepte pas certaines informations entrées
+    7a.1 Le système demande à l’employé ou l'employé_2 d'entrer à nouveau les informations dans le système.
+    7a.2 Le scénario reprend à l’étape 5.                
+                </p></pre>
+                <h5>Postcondition:</h5>
+                <pre><p>L’employé a désormais un compte dans le système.</p></pre>
+                <br>
+                <p>------------------------------------------------------------------------------</p>
+                <br>
+            </section>
+            <section>
+                <h4>8. Réinitialisation du mot de passe de l’employé</h4>
+                <h5>But: </h5>
+                <pre><p>L’employé souhaite réinitialiser son mot de passe.</p></pre>
+                <h5>Préconditions:</h5>
+                <pre><p>
+1. L’employé possède un compte dans le système.
+2. Lundi au vendredi de 8h et 18h EDT, excluant les jours fériés
+                </p></pre>
+                <h5>Acteur:</h5>
+                <pre><p>Employé (acteur principal)</p></pre>
+                <h5>Scénario principal:</h5>
+                <pre><p>
+1. Appel au cas <u>l’employé se connecte au système</u> sans pouvoir se connecter.
+2. L’employé ouvre la page “oublié mot de passe“.
+3. Il écrit son code employé et son adresse courriel dans le système .
+4. Le système envoie un courriel pour changer son mot de passe dans son adresse courriel. 
+5. L’employé va dans son adresse courriel pour ouvrir la réinisialisation de mot de passe
+6. L’employé inscrit son nouveau mot de passe.
+7. Le système valide le nouveau mot de passe
+8. Le système confirme le nouveau mot de passe.
+9. Le système retourne à la page de connexion.                    
+                </p></pre>
+                <h5>Scénario alternatif:</h5>
+                <pre><p>
+7.a Le nouveau mot de passe n’a pas tous les critères voulus 
+    7.a.1 Retour à l'étape 6  
+                </p></pre>
+                <h5>Postcondition:</h5>
+                <pre><p>L’employé change son mot de passe dans le système.</p></pre>
+                <br>
+                <p>------------------------------------------------------------------------------</p>
+                <br>
+            </section>
+            <section>
+                <h4>9. Envoi des rapports de vaccination (suivis) </h4>
+                <h5>But: </h5>
+                <pre><p>L’employé veut envoyer un rapport de vaccination (suivi) aux visiteurs.</p></pre>
+                <h5>Préconditions:</h5>
+                <pre><p>
+1. Le visiteur a été vacciné aujourd’hui chez GoodPeople
+2. Lundi au vendredi à 18h EDT, excluant les jours fériés      
+                </p></pre>
+                <h5>Acteurs:</h5>
+                <pre><p>Employé (acteur principal)</p></pre>
+                <h5>Scénario principal:</h5>
+                <pre><p>
+1. Appel du cas <u>connexion de l’employé au service</u>.
+2. L’employé consulte le calendrier (appel au cas <u>consulter le calendrier</u>).
+3. Le logiciel montre la liste des visiteurs vaccinées de la date sélectionnée de 8h à 18h.
+4. L’employé démarre l’envoi de suivi.
+5. Le système procède à l’envoi automatique de rapport de vaccination par courrier électronique à tous les visiteurs qui ont eu leur vaccination aujourd’hui.
+                </p></pre>
+                <h5>Postcondition:</h5>
+                <pre><p>Les visiteurs de la journée ont reçu leur suivi.</p></pre>
+                <br>
+                <p>------------------------------------------------------------------------------</p>
+                <br>
+            </section>
+            <section>
+                <h4>10. Consulter la liste des visiteurs</h4>
+                <h5>But:</h5>
+                <pre><p>L’employé veut consulter la liste des visiteurs</p></pre>
+                <h5>Préconditions:</h5>
+                <pre><p>
+1. Lundi au vendredi de 8h et 18h EDT, excluant les jours fériés
+                </p></pre>
+                <h5>Acteur:</h5>
+                <pre><p>Employé (acteur principal)</p></pre>
+                <h5>Scénario principal:</h5>
+                <pre><p>
+1. L’employé se connecte au système (appel au cas <u>connexion de l’employé au système</u>).
+2. Le système affiche une page menu pour l’employé.
+3. L’employé accède à la page des visiteurs.
+4. Le système affiche la liste des visiteurs.        
+                </p></pre>
+                <h5>Postcondition:</h5>
+                <pre><p>L’employé a accès et consulte la liste des visiteurs</p></pre>
+                <br>
+                <p>------------------------------------------------------------------------------</p>
+                <br>
+            </section>
+            <section>
+                <h4>11. Consulter la liste des bénévoles </h4>
+                <h5>But:</h5>
+                <pre><p>L’employé veut consulter la liste des bénévoles</p></pre>
+                <h5>Préconditions:</h5>
+                <pre><p>
+1. Lundi au vendredi de 8h et 18h EDT, excluant les jours fériés
+                </p></pre>
+                <h5>Acteur:</h5>
+                <pre><p>Employé (acteur principal)</p></pre>
+                <h5>Scénario principal:</h5>
+                <pre><p>
+1. L’employé se connecte au système (appel au cas <u>connexion de l’employé au système</u>).
+2. Le système affiche une page menu pour l’employé.
+3. L’employé accède à la page des bénévoles.
+4. Le système affiche la liste des bénévoles.        
+                </p></pre>
+                <h5>Postcondition:</h5>
+                <pre><p>L’employé a accès et consulte la liste des bénévoles</p></pre>
+                <br>
+                <p>------------------------------------------------------------------------------</p>
+                <br>
+            </section>
+            <section>
+                <h4>12. Consulter le calendrier </h4>
+                <h5>But:</h5>
+                <pre><p>Un employé accède au calendrier</p></pre>
+                <h5>Préconditions:</h5>
+                <pre><p>
+1. L’employé possède un compte dans le système
+2. Lundi au vendredi de 8h et 18h EDT, excluant les jours fériés
+                </p></pre>
+                <h5>Acteurs:</h5>
+                <pre><p>Employé (acteur principal)</p></pre>
+                <h5>Scénario principal:</h5>
+                <pre><p>
+1. L’employé se connecte au système.
+2. Le système affiche une page menu pour l’employé.
+3. L’employé ouvre la page du calendrier et choisi une date
+4. Le système affiche les informations de la date choisi du calendrier                     
+                </p></pre>
+                <h5>Postcondition:</h5>
+                <pre><p>L’employé a consulté le calendrier</p></pre>
+                <p>------------------------------------------------------------------------------</p>
+                <br>
+            </section>
+            <section>
+                <h4>13. Ajouter bénévole </h4>
+                <h5>But:</h5>
+                <pre><p>Un employé souhaite ajouter un bénévole dans le système</p></pre>
+                <h5>Préconditions:</h5>
+                <pre><p>
+1. Le bénévole ne possède pas de compte dans le système
+2. Lundi au vendredi de 8h et 18h EDT, excluant les jours fériés
+                </p></pre>
+                <h5>Acteurs:</h5>
+                <pre><p>Employé (acteur principal), bénévole (acteur secondaire)</p></pre>
+                <h5>Scénario principal:</h5>
+                <pre><p>
+1. L’employé se connecte au système.
+2. Le système affiche une page menu pour l’employé.
+3. L’employé ouvre la page d'inscription pour les bénévoles.
+4. Le bénévole entre les informations demandé par le système.
+5. Le système valide les informations
+6. Le système confirme la création du compte du bénévole
+                </p></pre>
+                <h5>Scénario alternatif:</h5>
+                <pre><p>
+5a. Le système n’accepte pas certaines informations entrées
+    5a.1 Le système demande au bénévole d'entrer à nouveau les informations dans le système.
+    5a.2 Le scénario reprend à l’étape 4.                
+                </p></pre>
+                <h5>Postcondition:</h5>
+                <pre><p>Le bénévole à un compte dans le système.</p></pre>
+                <p>------------------------------------------------------------------------------</p>
+                <br>
+            </section>
+            <section>
+                <h4>14. modifier bénévole </h4>
+                <h5>But:</h5>
+                <pre><p>Un employé souhaite modifier le compter d'un bénévole</p></pre>
+                <h5>Préconditions:</h5>
+                <pre><p>
+1. Le bénévole possède un compte dans le système
+2. Lundi au vendredi de 8h et 18h EDT, excluant les jours fériés
+                </p></pre>
+                <h5>Acteurs:</h5>
+                <pre><p>Employé (acteur principal)</p></pre>
+                <h5>Scénario principal:</h5>
+                <pre><p>
+1. L’employé se connecte au système.
+2. Le système affiche une page menu pour l’employé.
+3. L’employé ouvre la liste des bénévoles.
+4. Le système affiche la liste des bénévoles.
+5. L'employé sélectionne le bénévole à modifier.
+6. Le système affiche les informations du bénévole.
+7. L'employé modifie les informations du bénévole qu'il souhaite modifier.
+8. Le système valide les informations.
+9. Le système confirme la modification du compte.
+                </p></pre>
+                <h5>Scénario alternatif:</h5>
+                <pre><p>
+8a. Le système n’accepte pas certaines informations entrées
+    8a.1 Le système demande à l'employé d'entrer à nouveau les informations dans le système.
+    8a.2 Le scénario reprend à l’étape 7.                
+                </p></pre>
+                <h5>Postcondition:</h5>
+                <pre><p>L'employé a réussi à modifier le compte d'un bénévole.</p></pre>
+                <p>------------------------------------------------------------------------------</p>
+                <br>
+            </section>
+            <section>
+                <h4>15. Supprimer un bénévole </h4>
+                <h5>But:</h5>
+                <pre><p>Un employé souhaite supprimer un bénévole</p></pre>
+                <h5>Préconditions:</h5>
+                <pre><p>
+1. Le bénévole possède un compte dans le système
+2. Lundi au vendredi de 8h et 18h EDT, excluant les jours fériés
+                </p></pre>
+                <h5>Acteurs:</h5>
+                <pre><p>Employé (acteur principal)</p></pre>
+                <h5>Scénario principal:</h5>
+                <pre><p>
+1. L’employé se connecte au système.
+2. Le système affiche une page menu pour l’employé.
+3. L’employé ouvre la liste des bénévoles.
+4. Le système affiche la liste des bénévoles.
+5. L'employé sélectionne le bénévole à supprimer.
+6. Le système supprime le bénévole.
+7. Le système confirme la supression du compte.
+                </p></pre>
+                <h5>Postcondition:</h5>
+                <pre><p>L'employé a réussi à supprimer le compte d'un bénévole.</p></pre>
+                <p>------------------------------------------------------------------------------</p>
+                <br>
+            </section>
+            <section>
+                <h4>16. modifier visiteur </h4>
+                <h5>But:</h5>
+                <pre><p>Un employé souhaite modifier le compter d'un visiteur</p></pre>
+                <h5>Préconditions:</h5>
+                <pre><p>
+1. Le visiteur possède un compte dans le système
+2. Lundi au vendredi de 8h et 18h EDT, excluant les jours fériés
+                </p></pre>
+                <h5>Acteurs:</h5>
+                <pre><p>Employé (acteur principal)</p></pre>
+                <h5>Scénario principal:</h5>
+                <pre><p>
+1. L’employé se connecte au système.
+2. Le système affiche une page menu pour l’employé.
+3. L’employé ouvre la liste des visiteurs.
+4. Le système affiche la liste des visiteurs.
+5. L'employé sélectionne le visiteur à modifier.
+6. Le système affiche les informations du visiteur.
+7. L'employé modifie les informations du visiteur qu'il souhaite modifier.
+8. Le système valide les informations.
+9. Le système confirme la modification du compte.
+                </p></pre>
+                <h5>Scénario alternatif:</h5>
+                <pre><p>
+8a. Le système n’accepte pas certaines informations entrées
+    8a.1 Le système demande à l'employé d'entrer à nouveau les informations dans le système.
+    8a.2 Le scénario reprend à l’étape 7.                
+                </p></pre>
+                <h5>Postcondition:</h5>
+                <pre><p>L'employé a réussi à modifier le compte d'un visiteur.</p></pre>
+                <p>------------------------------------------------------------------------------</p>
+                <br>
+            </section>
+            <section>
+                <h4>17. Supprimer un visiteur </h4>
+                <h5>But:</h5>
+                <pre><p>Un employé souhaite supprimer un visiteur</p></pre>
+                <h5>Préconditions:</h5>
+                <pre><p>
+1. Le visiteur possède un compte dans le système
+2. Lundi au vendredi de 8h et 18h EDT, excluant les jours fériés
+                </p></pre>
+                <h5>Acteurs:</h5>
+                <pre><p>Employé (acteur principal)</p></pre>
+                <h5>Scénario principal:</h5>
+                <pre><p>
+1. L’employé se connecte au système.
+2. Le système affiche une page menu pour l’employé.
+3. L’employé ouvre la liste des visiteurs.
+4. Le système affiche la liste des visiteurs.
+5. L'employé sélectionne le visiteur à supprimer.
+6. Le système supprime le visiteur.
+7. Le système confirme la supression du compte.
+                </p></pre>
+                <h5>Postcondition:</h5>
+                <pre><p>L'employé a réussi à supprimer le compte d'un visiteur.</p></pre>
+                <p>------------------------------------------------------------------------------</p>
+                <br>
+            </section>
+            <section>
+                <h4>18. Remplir formulaire </h4>
+                <h5>But:</h5>
+                <pre><p>Un employé souhaite remplir un formulaire avec un visiteur</p></pre>
+                <h5>Préconditions:</h5>
+                <pre><p>
+1. Lundi au vendredi de 8h et 18h EDT, excluant les jours fériés.
+2. Avoir une carte d'assurance maladie valide.
+                </p></pre>
+                <h5>Acteurs:</h5>
+                <pre><p>Employé (acteur principal), visiteur (acteur secondaire)</p></pre>
+                <h5>Scénario principal:</h5>
+                <pre><p>
+1. L’employé se connecte au système.
+2. Le système affiche une page menu pour l’employé.
+3. L’employé ouvre la page de création d'un formulaire.
+4. L'employé pose des question au visiteur afin de recueillir ses informations personnelles.
+5. Le visiteur communique ses informations personnelles.
+6. L'employé entre dans le formulaire les informations personnelles du visiteurs.
+7. Le système valide les informations.
+8. Le système confirme la création du formulaire.
+                </p></pre>
+                <h5>Scénario alternatif:</h5>
+                <pre><p>
+7a. Le système n’accepte pas certaines informations entrées
+    7a.1 Le système demande à l'employé d'entrer à nouveau les informations dans le système.
+    7a.2 Le scénario reprend à l’étape 4.                
+                </p></pre>
+                <h5>Postcondition:</h5>
+                <pre><p>L'employé a rempli le formulaire avec le visiteur.</p></pre>
+                <p>------------------------------------------------------------------------------</p>
+                <br>
+            </section>
+            <section>
+                <h4>19. Notification de rappel </h4>
+                <h5>But:</h5>
+                <pre><p>L'employé envoie un courriel email pour rappeller l'utilisateur</p></pre>
+                <h5>Préconditions:</h5>
+                <pre><p>
+1. Lundi au vendredi à 18h EDT, excluant les jours fériés
+2. Le visiteur a un rendez-vous dans 48h
+3. L'employé est connecté au système
+                </p></pre>
+                <h5>Acteurs:</h5>
+                <pre><p>Employé (acteur principal)</p></pre>
+                <h5>Scénario principal:</h5>
+                <pre><p>
+1. L'employé fait une requête au système pour envoyé un courriel aux visiteurs qui ont un rendez-vous dans 48h.
+2. Le système envoie les courriels aux visiteurs.
+3. Le système confirme à l'employé que le les courriels sont envoyé.
+                </p></pre>
+                <h5>Postcondition:</h5>
+                <pre><p>L'employé a réussi à envoyé la notification de rappel aux visiteurs.</p></pre>
+                <p>------------------------------------------------------------------------------</p>
+                <br>
+            </section>
+
+            <br><br>
+            <hr><br><br>
+
+            <section>
+                <h2 id="analyse" class="section-title">Analyse</h2>
+                <div>
+                    <h2>Besoins matériels: </h2>
+                    <h3>Partie à informatiser</h3>
+                    <ul>
+                        <li>Le calendrier </li>
+                        <li>Listes des acteurs (visiteurs, bénévoles, employés)</li>
+                        <li>Stocker les profils de vaccinations</li>
+                        <li>Envoyer le passeport vaccinale du visiteur</li>
+                    </ul>
+                        
+                    <h3>Matériels nécessaires</h3>
+                    <ul>
+                        <li>Douze ordinateurs sur place Windows</li>
+                        <li>Disques durs (pour fichier texte)</li>
+                        <li>Imprimantes laser pour imprimer le formulaire du visiteur</li>
+                    </ul>
+
+                    <h3>Solutions de stockage</h3>
+                    <ul>
+                        <li>Dans un fichier texte , modèle de stockage tabulaire, les comptes des visiteurs (avec informations personnelles), employés et bénévoles sont stockées</li>
+                    </ul>
+                </div>
+                <div>
+                    <h2>Contraintes physiques et conceptuelles</h2>
+                    <h3>Contraintes physiques</h3>
+                    <ul>
+                        <li>Fichier texte (table-colonnes, donnes-rangees)</li>
+                        <li>Disque dur (internes externes)</li>
+                        <li>Puissance de calcul : cpu, memoire, reseau, graphique</li>
+                    </ul>
+                    <h3>Contraintes conceptuelles</h3>
+                    <ul>
+                        <li>Modele de donnees: Modele tabulaire</li>
+                        <li>Format choisi: format CSV</li> 
+                        <li>Langage de programmation: Java</li>  
+                        <li>Normes: Camelcase, MVC</li> 
+                    </ul>
+                </div>
+                <div>
+                    <h3>Modèle dynamique: Diagrammes d'activités</h3>
+                    <h3>Diagramme d'activités système complet</h3>
+                    <img class="ds" src="./images/activityDiagram1.PNG" alt="Diagramme d'activités système">
+                    <br> <br>
+                    <h3>Connexion au système</h3>
+                    <img class="ds" src="./images/DASystemConnection.PNG" alt="Diagramme d'activités Connexion au système">
+                    <br> <br>
+                    <h3>Gestion des rendez-vous</h3>
+                    <img class="ds" src="./images/DAGestionAppointment.PNG" alt="Diagramme d'activités Gestion des rendez-vous">
+                    <br> <br>
+                    <h3>Ajouter un rendez-vous</h3>
+                    <img class="ds" src="./images/DAAddAppointment.png" alt="Diagramme d'activités Ajout rendez-vous">
+                    <br> <br>
+                    <h3>Accès formulaire</h3>
+                    <img class="ds" src="./images/DAFormulaire.PNG" alt="Diagramme d'activités Accès formulaire">
+                    <br> <br>
+                    <h3>Menu Gestion des visiteurs</h3>
+                    <img class="ds" src="./images/DAGestionVisitors.PNG" alt="Diagramme d'activités Menu gestion des visiteurs">
+                    <br> <br>
+                    <h3>Ajouter un compte visiteur</h3>
+                    <img class="ds" src="./images/DAAddVisitor.PNG" alt="Diagramme d'activités Ajout compte visiteur">
+                    <br> <br>
+                    <h3>Gestion des comptes des visiteurs (supprimer, modifier)</h3>
+                    <img class="ds" src="./images/DAManagaVisitorAccounts.png" alt="Diagramme d'activités Modifier, supprimer visiteur">
+                    <br> <br>
+                    <h3>Accès profil de vaccination</h3>
+                    <img class="ds" src="./images/DAVaccinationProfileMenu.png" alt="Diagramme d'activités Accès formulaire">
+                    <br> <br>
+                    <h3>Gestion des Bénévoles</h3>
+                    <img class="ds" src="./images/DAGestionVolunteers.PNG" alt="Diagramme d'activités Gestion des Bénévoles">
+                    <br> <br>
+                    <h3>Gestion des rendez-vous (Connexion d'un compte bénévole)</h3>
+                    <img class="ds" src="./images/DAGestionAppointmentVolunteerMenu.PNG" alt="Diagramme d'activités Gestion des rendez-vous depuis volontaire">
+                    <br> <br>
+                    <h3>Accès à la lsite des visiteurs (Connexion d'un compte bénévole)</h3>
+                    <img class="ds" src="./images/DAShowVisitorListVolunteer.png" alt="Diagramme d'activités Voir liste visiteurs depuis volontaire">
+                    <br> <br>
+                </div>
+            </section>
+
+            <br><br>
+            <hr><br><br>
+
+            <section>
+                <h2 id="conception" class="section-title">Conception</h2>
+                <div>
+                    <h2>Justification du design: Abstraction, couplage et cohésion</h2>
+                    <p>Le model MVC que nous avons choisi nous permet de conceptualiser un diagramme de classe qui sera facilement maintenable tout 
+                        au long du cycle de vie du logiciel. La manière dont MVC est structuré permet d’avoir une forte cohésion dans les classes et 
+                        un faible couplage entre eux. Par exemple, s’il y a une amélioration dans le UI à implémenter, il suffit de modifier le code 
+                        dans la « vue » sans avoir à manipuler la logique ni les données. Dans notre cas, il ne faudra que changer le code dans la classe 
+                        « MainMenu ». En effet, afin de concrétiser les avantages d'abstraction qu’apporte le MVC dans notre code, nous avons les classes suivantes : 
+                        « VisitorAccountModel », « VisitorAccountController » et « MainMenu ». Si on veut que le code change le nom d’un utilisateur, le « Controlleur » va 
+                        tout dabord s’occuper de la logique, c’est-à-dire valider le nouveau nom. Par la suite, le « Model » va modifier le nom du visiteur dans le fichier texte 
+                        et finalement le nouveau nom s’affichera à l’écran. Il est clair que chaque classe à son propre rôle spécifique, indice d’une forte cohésion et d’un faible couplage.</p>
+                </div>
+                <div>
+                    <h2>Design détaillé: Diagramme de classes, Diagramme de séquences</h2>
+                    <br>
+                    <h2>Diagramme de classes</h2>
+                    <h3>Overview</h3>
+                    <img class="dc" src="./images/classDiagramOverview.PNG" alt="Diagramme de classes">
+                    <br>
+                    <h3>Part 1</h3>
+                    <img class="ds" src="./images/classDiagram1.PNG" alt="Diagramme de classes">
+                    <br>
+                    <h3>Part 2</h3>
+                    <img class="ds" src="./images/classDiagram2.PNG" alt="Diagramme de classes">
+                    <br>
+                    <h3>Part 3</h3>
+                    <img class="ds" src="./images/classDiagram3.PNG" alt="Diagramme de classes">
+                    <br>
+                    <br>
+                    <br>
+                    <h2>Diagramme de séquences</h2>
+                    <br>
+                    <h3>Gestion des visiteurs (Création compte visiteur)</h3>
+                    <img class="ds" src="./images/createCompteVisiteur.PNG" alt="Création compte visiteur">
+                    <br>
+                    <h3>Gestion des visiteurs (Modifier compte visiteur)</h3>
+                    <img class="ds" src="./images/modifyCompteVisiteur.PNG" alt="Modifier compte visiteur">
+                    <br>
+                    <h3>Gestion des visiteurs (Supprimer compte visiteur)</h3>
+                    <img class="ds" src="./images/deleteCompteVisiteur.PNG" alt="Supprimer compte visiteur">
+                    <br>
+                    <h3>Réservation d'une période</h3>
+                    <img class="ds" src="./images/reservePeriod.PNG" alt="Réservation d'une période">
+                    <br>
+                    <h3>Mise à jour du profil de vaccination</h3>
+                    <img class="ds" src="./images/updateVaccinationProfile.PNG" alt="Mise à jour du profil de vaccination">
+                </div>
+            </section>
+
+            <br><br>
+            <hr><br><br>
+
+            <section>
+                <div>
+                    <h2 id="implémentation" class="section-title">Implémentation</h2>
+                    <br>
+                    <h3>Voir le prototype fonctionnel. Pour savoir comment utiliser l'application, veuillez lire attentivement le README qui décrit comment besoins
+                        utiliser l'application.
+                    </h3>
+                    <br>
+                    <h3>
+                        <a class="prototype" href="https://miro.com/welcomeonboard/STRCQkN5MXJDaE5QZGNhRHBheFZaRlhrUmtMWE50Qk41VHFoV3BsS2tpcklxcjQySVNESERYbDFhaVlJSlY3THwzMDc0NDU3MzY1NDM0MTQ2MjAz?invite_link_id=491703481224">Prototype</a>
+                    </h3>
+                    <br>
+                </div>
+            </section>
+
+            <br><br>
+            <hr><br><br>
+
+            <section>
+                <div>
+                    <h2 id="test" class="section-title">Tests</h2>
+                    <br>
+                    <h4>Nous avons faits des tests sur 6 différentes fonctions que nous jugeons assez importantes à l'aide de Junit5. Voici les résultats des tests.</h4>
+                    <h3>Ajouter visiteur (addVisitorListTest) et Ajouter profile de vaccination (VaccinationProfileTest)</h3>
+                    <img src="/images/visitorTests.png" alt="Résultat test visiteur">
+                    <br>
+                    <h3>Ajouter rendez-vous (AddAppointmentTest), Montrer les heures disponibles d'une journée (showDayAvailabilitiesTest) et Formattage des heures pour les boucle (formatTimeTest)</h3>
+                    <img src="/images/appointmentTests.png" alt="Résultat test rendez-vous">
+                    <br>
+                    <h3>Se connecter (loginTest)</h3>
+                    <img src="/images/systemAccountTests.png" alt="Résultat test se connecter">
+                    <br>
+                    <br>
+                </div>
+            </section>
+
+            <br><br>
+            <hr><br><br>
+        </div>
+    </main>
+    <footer class="report-footer">
+        <p>
+            <a class="link report-footer__link" href="https://github.com/AntoineHo6/IFT2255_projet">
+                Lien vers le GitHub</a>
+        </p>
+        <p>
+            <a class="link report-footer__link"
+                href="./VPP/DEVOIR1BIGBOYBIGDREAMS.vpp">Lien vers ressource externe
+                (fichiers VPP)</a>
+        </p>
+        <br>
+    </footer>
+
+</body>
+
+</html>

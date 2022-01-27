@@ -1,0 +1,143 @@
+.report-header {
+    padding-top: 24px;
+    padding-bottom: 24px;
+    background-color:#ffffef;
+}
+
+.title-section {
+    padding-left: 5vw;
+    padding-right: 5vw;
+}
+
+.report-title {
+    color: royalblue;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.report-summary {
+    max-width: 800px;
+    font-size: 1.4em;
+    color: #555;
+}
+
+.section-title {
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    font-size: 3.4em;
+    font-weight: 500;
+}
+
+.team-section {
+    padding-left: 5vw;
+    padding-right: 5vw;
+}
+
+.team-title {
+    font-weight: 500;
+    margin-bottom: 12px;
+    color: #1C3A94;
+}
+
+.members {
+    display: flex;
+    flex-direction: row;
+}
+
+.member {
+    display: flex;
+    flex-direction: column;
+}
+
+.member:not(:last-child) {
+    margin-right: 12px;
+}
+
+.member-pic {
+    display: block;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+}
+
+.member-role {
+    font-size: 0.9em;
+    font-weight: 500;
+    color: #555;
+}
+
+.ds {
+    display: block;
+    width: 1150px;
+    height: 800px;
+}
+
+.dc {
+    display: block;
+    width: 1300px;
+    height: 800px;
+}
+.report-body {
+    display: flex;
+    word-wrap: normal;
+    min-width: 600px;
+}
+
+.report-aside {
+    padding-top: 10px;
+    padding-right: 12px;
+    padding-left: 4.5vw;
+    box-shadow: 1px 0 1px #999;
+    background-color:#2e2b27
+}
+
+.sidebar {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    padding-top: 14px;
+}
+
+.report-main {
+    padding-left: 12px;
+    padding-right: 5vw;
+    padding-top: 24px;
+    min-width: 600px;
+}
+
+.nav-item__link {
+    display: block;
+    padding: 6px;
+    text-decoration: none;
+    color: #f36523;
+}
+
+.nav-item__link:hover {
+    color: #476fe6;
+}
+
+.glossary {
+    padding-left: 2em;
+    font-size: 1.3em;
+}
+
+.preview-img {
+    width: 600px;
+    height: 400px;
+}
+
+.report-footer {
+    background-color: #2C5EB4;
+    padding: 12px 5vw 24px;
+}
+
+.report-footer p {
+    margin: 0;
+}
+
+.report-footer__link {
+    color: #fff;
+}
+
+.report-footer__link:hover {
+    color: #E87429;
+}

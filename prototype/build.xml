@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<project name="VaxTodoRe" default="create-jar-and-clean">
+
+    <target name="create-jar-and-clean" depends="create-jar" description="remove intermediate files">
+        <delete dir="classes"/>
+    </target>
+
+    <target name="create-jar" depends="doc" description="create a Jar file for the application">
+        <jar destfile="VaxTodoRe.jar">
+            <fileset dir="classes" includes="**/*.class"/>
+            <manifest>
+                <attribute name="Main-Class" value="VaxTodoMain"/>
+            </manifest>
+        </jar>
+    </target>
+
+    <target name="compile" depends="delete-jar" description="compile the java source code to class files">
+        <mkdir dir="classes"/>
+        <javac srcdir="./src" destdir="classes"/>
+    </target>
+
+    <target name="delete-jar" depends="delete-doc" description="remove all artifact files">
+        <delete file="VaxTodoRe.jar"/>
+    </target>
+
+    <target name="delete-doc" description="remove all artifact files">
+        <delete dir="doc/javadoc"/>
+    </target>
+
+    <target name="doc" depends="compile" description="generate documentation">
+        <javadoc sourcepath="src" destdir="doc/javadoc"/>
+    </target>
+
+</project>
