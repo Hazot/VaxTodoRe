@@ -44,19 +44,19 @@ To log in to the application, please use one of the following credentials:
 
 Format of this list: - Functionality (who can access it)
 
-- Log in as a VaxTodo volunteer or employee (Volunteer and employee)
-- Consult the calendar (Volunteer and employee)
-- Add an appointment/visit (Volunteer and employee)
-- Consult the list of visitors (Volunteer and employee)
-- Delete and modify an appointment (Employee)
-- Create, modify and delete a visitor account (Employee)
-- Consult and modify the vaccination profile of a visitor (Employee)
-- Consult the list of volunteers (Employee)
-- Create, modify and delete a volunteer account (Employee)
-- Complete and save an identification form (Employee)
-- Retrieve and print an identification form (Employee)
-- Send Vaccination Report (Employee)
-- Send a callback notification (Employee)
+- Log in as a VaxTodo volunteer or employee (Volunteer and employee).
+- Consult the calendar (Volunteer and employee).
+- Add an appointment/visit (Volunteer and employee).
+- Consult the list of visitors (Volunteer and employee).
+- Delete and modify an appointment (Employee).
+- Create, modify and delete a visitor account (Employee).
+- Consult and modify the vaccination profile of a visitor (Employee).
+- Consult the list of volunteers (Employee).
+- Create, modify and delete a volunteer account (Employee).
+- Complete and save an identification form (Employee).
+- Retrieve and print an identification form (Employee).
+- Send Vaccination Report (Employee).
+- Send a callback notification (Employee).
 
 ## Data included
 
@@ -82,6 +82,8 @@ Format of this list: - Functionality (who can access it)
   - 202004123567,123123111,Mahmoudpass1!,Mahmoud,Ahmadinejad,5148752461,mahmoud12@gmail.com,1530 Henri-Bourassa,H3M3E2,Montreal,1994-01-23,Sun,Mon
   - 202082746185,123412341,Johnpass1!,John,Doe,5148630261,john23@gmail.com,1530 Henri-Bourassa,H3M3E2,Montreal,1994-01-23,Mon,Tue,Wed
   - 202004286919,120158221,KevinPass(2),Kevin,Peter,5147901057,kevin.peter@umontreal.ca,2900 Edouard-Montpetit Blvd,H3T1J4,Montreal,2000-12-17
+
+*These email addresses do not exist, proceed with caution.*
 
 ## Screenshots
 
