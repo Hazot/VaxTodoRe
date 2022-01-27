@@ -1,6 +1,6 @@
 # VaxTodo:re
 
-VaxTodo:re is a command line platform made for apppointments to make appointment scheduling more efficient for employees and volunteers.
+VaxTodo:re is a command line platform, written in french, made for apppointments to make appointment scheduling more efficient for employees and volunteers.
 This application is a working prototype made to test the functionalities and exploring the logic behind our system.
 
 ![Main Menu](mainMenu.png)
