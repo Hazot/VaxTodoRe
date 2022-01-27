@@ -27,7 +27,7 @@ To use the app (run the code), there are 2 main ways:
 1. You can simply go to the release folder, open your terminal there and enter the command:
    java -jar VaxToroRe.jar. The application should be open in your terminal! If VaxTodoRe.jar
    need to be updated, in intellij, it is possible to build the application using the ANT build.xml configuration file.
-2. In your IDE of choice (here IntelliJ), it is possible to open the project from inside the Prototype document and
+2. In your IDE of choice (here IntelliJ), it is possible to open the project from inside the *Prototype* folder and
    then you can build or create your own configuration and use the VaxTodoMain class to
    run the code.
 
