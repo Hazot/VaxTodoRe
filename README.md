@@ -10,9 +10,9 @@ This application is a working prototype made to test the functionalities and exp
 - [User Manual](#user-manual)
 - [Login to the application](#login-to-the-application)
 - [Features implemented](#features-implemented)
-- [Data included in the application](#data-included-in-the-application)
+- [Data included](#data-included)
 - [Screenshots](#screenshots)
-- [Menu format and feature acces](#menu-format-and-feature-acces)
+- [Menu format](#menu-format-and-feature-acces-with-choices)
 - [Authors](#authors)
 
 ## User Manual
@@ -58,7 +58,7 @@ Format of this list: - Functionality (who can access it)
 - Send Vaccination Report (Employee)
 - Send a callback notification (Employee)
 
-## Data included in the application
+## Data included
 
 - Appointment
   - 305537,big,boi,2021-07-20,11:00,1
@@ -89,7 +89,7 @@ Format of this list: - Functionality (who can access it)
 
 ![Example](exampleTask.png)
 
-## Menu format and feature acces
+## Menu format and feature acces with choices
 
 ### Main menu (Employee)
 
