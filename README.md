@@ -14,7 +14,6 @@ This application is a working prototype made to test the functionalities and exp
 - [Screenshots](#screenshots)
 - [Menu format and feature acces](#special-thanks)
 - [Authors](#authors)
--   
 
 ## User Manual
 
