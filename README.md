@@ -3,23 +3,18 @@
 VaxTodo:re is a command line platform made for apppointments to make appointment scheduling more efficient for employees and volunteers.
 This application is a working prototype made to test the functionalities and exploring the logic behind our system.
 
-## Features implemented
+![Main Menu](loginAndMenu.png)
 
-Format of this list: - Functionality (who can access it)
+## Table of content
 
-- Log in as a VaxTodo volunteer or employee (Volunteer and employee)
-- Consult the calendar (Volunteer and employee)
-- Add an appointment/visit (Volunteer and employee)
-- Consult the list of visitors (Volunteer and employee)
-- Delete and modify an appointment (Employee)
-- Create, modify and delete a visitor account (Employee)
-- Consult and modify the vaccination profile of a visitor (Employee)
-- Consult the list of volunteers (Employee)
-- Create, modify and delete a volunteer account (Employee)
-- Complete and save an identification form (Employee)
-- Retrieve and print an identification form (Employee)
-- Send Vaccination Report (Employee)
-- Send a callback notification (Employee)
+- [User Manual](#user-manual)
+- [Login to the application](#login-to-the-application)
+- [Features implemented](#features-implemented)
+- [Data included in the application](#data-included-in-the-application)
+- [Screenshots](#screenshots)
+- [Menu format and feature acces](#special-thanks)
+- [Authors](#authors)
+-   
 
 ## User Manual
 
@@ -45,6 +40,24 @@ To log in to the application, please use one of the following credentials:
 - Volunteer role
   - username: 123123111 | password: Mahmoudpass1!
   - username: 120158221 | password: KevinPass(2)
+
+## Features implemented
+
+Format of this list: - Functionality (who can access it)
+
+- Log in as a VaxTodo volunteer or employee (Volunteer and employee)
+- Consult the calendar (Volunteer and employee)
+- Add an appointment/visit (Volunteer and employee)
+- Consult the list of visitors (Volunteer and employee)
+- Delete and modify an appointment (Employee)
+- Create, modify and delete a visitor account (Employee)
+- Consult and modify the vaccination profile of a visitor (Employee)
+- Consult the list of volunteers (Employee)
+- Create, modify and delete a volunteer account (Employee)
+- Complete and save an identification form (Employee)
+- Retrieve and print an identification form (Employee)
+- Send Vaccination Report (Employee)
+- Send a callback notification (Employee)
 
 ## Data included in the application
 
@@ -73,8 +86,9 @@ To log in to the application, please use one of the following credentials:
 
 ## Screenshots
 
+![Exemple](exempleTask.png)
 
-## Progran
+## Menu format and feature acces
 
 ### Main menu (Employee)
 
@@ -131,7 +145,8 @@ Either way you can type 0 to return to the main menu.
 
 This concludes our application, I hope you like it!
 
-Authors:
+## Authors
+
 - Antoine Ho
-- Mendel Sun (responsable du projet)
+- Mendel Sun (Project manager)
 - Kevin Lessard
