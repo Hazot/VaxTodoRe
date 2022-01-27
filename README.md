@@ -12,7 +12,7 @@ This application is a working prototype made to test the functionalities and exp
 - [Features implemented](#features-implemented)
 - [Data included in the application](#data-included-in-the-application)
 - [Screenshots](#screenshots)
-- [Menu format and feature acces](#special-thanks)
+- [Menu format and feature acces](#menu-format-and-feature-acces)
 - [Authors](#authors)
 
 ## User Manual
