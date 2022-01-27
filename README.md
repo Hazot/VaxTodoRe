@@ -1,133 +1,137 @@
 # VaxTodo:re
 
-Cette application est un prototype fonctionnel de VaxTodo permettant de tester les fonctionnalités et d'explorer la
-logique derrière le système. VaxTodo:re est une plateforme en Ligne de commandes pour des rendez-vous permettant de rendre la prise de
-rendez-vous plus efficace pour les employés et les bénévoles de VaxTodo et Goodpeople.
+VaxTodo:re is a command line platform made for apppointments to make appointment scheduling more efficient for employees and volunteers.
+This application is a working prototype made to test the functionalities and exploring the logic behind our system.
 
-Note: Les sauvegardes dans le CSV sont effectuées lorsqu'on quitte l'application.
+## Features implemented
 
-## Fonctionnalités
+Format of this list: - Functionality (who can access it)
 
-- Se connecter en tant que bénévole ou employée de VaxTodo (Bénévole et employé)
-- Consulter le calendrier (Bénévole et employé)
-- Ajouter un rendez-vous/visite (Bénévole et employé)
-- Consulter la liste des visiteurs (Bénévole et employé)
-- Supprimer/modifier un rendez-vous (Employé)
-- Créer/Modifier/Supprimer un compte visiteur (Employé)
-- Consulter et modifier le profil de vaccination d'un visiteur (Employé)
-- Consulter la liste des bénévoles (Employé)
-- Créer/Modifier/Supprimer un compte bénévole (Employé)
-- Remplir et sauvegarder un formulaire d'identification (Employé)
-- Récupérer et imprimer un formulaire d'identification (Employé)
-- Envoyer un rapport de vaccination (Employé)
-- Envoyer une notification de rappel (Employé)
+- Log in as a VaxTodo volunteer or employee (Volunteer and employee)
+- Consult the calendar (Volunteer and employee)
+- Add an appointment/visit (Volunteer and employee)
+- Consult the list of visitors (Volunteer and employee)
+- Delete and modify an appointment (Employee)
+- Create, modify and delete a visitor account (Employee)
+- Consult and modify the vaccination profile of a visitor (Employee)
+- Consult the list of volunteers (Employee)
+- Create, modify and delete a volunteer account (Employee)
+- Complete and save an identification form (Employee)
+- Retrieve and print an identification form (Employee)
+- Send Vaccination Report (Employee)
+- Send a callback notification (Employee)
 
-## Manuel d'utilisation
+## User Manual
 
-Pour utiliser l'application, il y a 2 manières plus simples.
-1. On peut simplement aller dans le dossier release, d'y ouvrir son terminal et de entrer la commande:
-   java -jar VaxToroRe.jar. L'application devrait être ouverte dans votre terminal! Si VaxTodoRe.jar 
-   être mis à jour, dans intellij, il est possible de build l'application à l'aide du fichier de configuration ANT build.xml
-2. Dans le IDE de votre choix (ici IntelliJ), il est possible de ouvrir le projet depuis l'intérieur du document Prototype et
-   ensuite vous pouvez builder ou créer votre propre configuration et utiliser la classe VaxTodoMain pour
-   lancer le code.
+To use the app (run the code), there are 2 main ways:
+1. You can simply go to the release folder, open your terminal there and enter the command:
+   java -jar VaxToroRe.jar. The application should be open in your terminal! If VaxTodoRe.jar
+   need to be updated, in intellij, it is possible to build the application using the ANT build.xml configuration file.
+2. In your IDE of choice (here IntelliJ), it is possible to open the project from inside the Prototype document and
+   then you can build or create your own configuration and use the VaxTodoMain class to
+   run the code.
 
-Étant un prototype, nous avons inclus un jeu de données afin de tester l'application.
-À l'ouverture, vous devez vous connecter en tant qu'employé ou bénévole. Ceci vous donnera accès
-au menu principal propre au rôle.
+It being a prototype, we included a dataset in order to test the application.
+Upon opening, you must log in as an employee or volunteer. This will give you access
+to the role-specific main menu.
 
-### Données incluses dans l'application
+## Login to the application
 
-- Rendez-vous
+To log in to the application, please use one of the following credentials:
+
+- Employee role
+  - username: 123123123 | password: Annapass1!
+  - username: 120158220 | password: KevinPass(1)
+- Volunteer role
+  - username: 123123111 | password: Mahmoudpass1!
+  - username: 120158221 | password: KevinPass(2)
+
+## Data included in the application
+
+- Appointment
   - 305537,big,boi,2021-07-20,11:00,1
   - 877900,darth,vader,2021-07-20,11:00,2
   - 305534,punch,in,2000-07-20,11:00,1
   - 305533,punch,out,1990-07-20,11:00,1
-- Employés
+- Employees
   - 202004286910,123123123,Annapass1!,Anna,Belle,5146758765,annabelle12@gmail.com,1530 Henri-Bourassa,H3M3E2,Montreal,1992-02-23
   - 202004286919,120158220,KevinPass(1),Kevin,Peter,5147901057,kevin.peter@umontreal.ca,2900 Edouard-Montpetit Blvd,H3T1J4,Montreal,2000-12-17
-- Fomulaires d'information
+- Information forms
   - 202010250001,juan,cortez,1990-01-13,COXJ00027593,2021-07-25,true,false,false,false,Moderna,true,Moderna,294757398204837474
   - 485737394826,matcha,zanmai,1206-08-03,SDXA232738273,8545-11-01,false,false,true,true,Pfizer,true,Pfizer,72389473829473829
-- Profile de vaccination
+- Vaccination profile
   - 202010250001,2000-05-31,1,Pfizer,7658375828372873
   - 202010250001,2021-07-24,2,Moderna,2865027562739573
   - 485737394826,2021-05-31,2,AstraZeneca,7658374822376873
-- Visiteurs
+- Visitors
   - 202010250001;cortez;juan;1990-01-13;juan.cortez@gmail.com;5147836802
   - 202004280010;hannoune;isabelle;1994-10-06;isa.hannoune@gmail.com;4382835821
-- Volontaires
+- Volunteers
   - 202004123567,123123111,Mahmoudpass1!,Mahmoud,Ahmadinejad,5148752461,mahmoud12@gmail.com,1530 Henri-Bourassa,H3M3E2,Montreal,1994-01-23,Sun,Mon
   - 202082746185,123412341,Johnpass1!,John,Doe,5148630261,john23@gmail.com,1530 Henri-Bourassa,H3M3E2,Montreal,1994-01-23,Mon,Tue,Wed
   - 202004286919,120158221,KevinPass(2),Kevin,Peter,5147901057,kevin.peter@umontreal.ca,2900 Edouard-Montpetit Blvd,H3T1J4,Montreal,2000-12-17
 
-### Connexion
+## Screenshots
 
-Pour se connecter à l'application, veuillez utiliser un des identifiants suivants:
 
-- Rôle de l'employé
-  - username: 123123123 | password: Annapass1!
-  - username: 120158220 | password: KevinPass(1)
-- Rôle du bénévole
-  - username: 123123111 | password: Mahmoudpass1!
-  - username: 120158221 | password: KevinPass(2)
+## Progran
 
-### Menu principal (Employé)
+### Main menu (Employee)
 
-À partir du menu principal, dans le rôle de l'employé, vous pouvez choisir l'une des options suivantes en tapant le chiffre correspondant.
-En tout tant vous pouvez taper 0 pour revenir au menu principal.
+From the main menu as an employee, you can choose one of the following options by typing the corresponding number.
+Either way you can type 0 to return to the main menu.
 
-- [1] Gestion des rendez-vous: Accédez au caldendrier et à la liste des rendez-vous, envoyer des rappels et ajouter, modifier ou supprimer un rendez-vous.
-- [2] Gestion formulaire: Accéder, créer ou imprimer un nouveau formulaire
-- [3] Gestion des visiteurs: Accédez à la liste des visiteurs et ajouter, modifier ou supprimer un visiteur.
-- [4] Gestion des bénévoles: Accédez à la liste des bénévoles et ajouter, modifier ou supprimer un bénévole.
-- [0] Quitter l'application: déconnexion.
+- [1] Appointment management: Access the calendar and the list of appointments, send reminders and add, modify or delete an appointment.
+- [2] Form management: Access, create or print a new form
+- [3] Visitor management: Access the visitor list and add, modify or delete a visitor.
+- [4] Volunteer management: Access the list of volunteers and add, modify or delete a volunteer.
+- [0] Exit the application: logout.
 
-#### Gestion des rendez-vous
+#### Appointment management
 
-- [1] Afficher le calendrier
-- [2] Ajouter un rendez-vous
-- [3] Afficher rendez-vous existant
-- [4] Envoyer notification de rappel
-- [0] Retour au menu principal
+- [1] Show calendar
+- [2] Add an appointment
+- [3] Show existing appointment
+- [4] Send reminder notification
+- [0] Back to main menu
 
-#### Gestion des visiteurs
+#### Visitor management
 
-- [1] Ajouter un nouveau visiteur
-- [2] Afficher visiteur existant
-- [3] Gestion compte visiteur: permet de modifier ou supprimer un visiteur
-- [4] Gestion profil vaccinal du visiteur
-- [0] Retour au menu principal
+- [1] Add a new visitor
+- [2] Show existing visitor
+- [3] Visitor account management: allows you to modify or delete a visitor
+- [4] Visitor vaccination profile management
+- [0] Back to main menu
 
-#### Gestion des profiles de vaccination
+#### Management of vaccination profiles
 
-- [1] Afficher le profil vaccinal: affiche les informations
-- [2] Modifier un des vaccins
-- [3] Envoyer un rapport de vaccination
-- [0] Retour au menu principal
+- [1] Show vaccination profile: displays the information
+- [2] Modify one of the vaccines
+- [3] Send vaccination report
+- [0] Back to main menu
 
-#### Gestion des bénévoles
+#### Volunteer management
 
-- [1] Afficher la liste des bénévoles
-- [2] Gestion des comptes bénévoles: Ajouter, modifier ou supprimer un bénévole
-- [0] Retour au menu principal
+- [1] Show list of volunteers
+- [2] Management of volunteer accounts: Add, modify or delete a volunteer
+- [0] Back to main menu
 
-### Menu principal (Bénévole)
+### Main Menu (Volunteer)
 
-- [1] Gestion des rendez-vous: Permet d'accéder à la liste des rendez-vous par date et ajouter des rendez-vous selon les instructions.
-- [2] Gestion des visiteurs: Permet d'accéder à la liste des visiteurs directement en suivant les instructions.
-- [0] Quitter l'application: déconnexion.
+- [1] Appointment management: Allows access to the list of appointments by date and add appointments according to the instructions.
+- [2] Visitor management: Allows access to the visitor list directly by following the instructions.
+- [0] Exit the application: logout.
 
-#### Gestion des rendez-vous (Bénévole)
+#### Appointment Management (Volunteer)
 
-- [1] Afficher le calendrier
-- [2] Ajouter un nouveau rendez-vous: créer une nouvelle visite
-- [3] Afficher un rendez-vous existant
-- [0] Retour au menu principal
+- [1] Show calendar
+- [2] Add new appointment: create a new visit
+- [3] View an existing appointment
+- [0] Back to the main menu
 
-Ceci conclu notre application, j'espère que vous l'aimererez!
+This concludes our application, I hope you like it!
 
-Auteurs:
+Authors:
 - Antoine Ho
 - Mendel Sun (responsable du projet)
 - Kevin Lessard
