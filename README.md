@@ -1,7 +1,7 @@
-# VaxTodo:re (Ligne de commandes)
+# VaxTodo:re
 
 Cette application est un prototype fonctionnel de VaxTodo permettant de tester les fonctionnalités et d'explorer la
-logique derrière le système. VaxTodo:re est une plateforme de rendez-vous permettant de rendre la prise de
+logique derrière le système. VaxTodo:re est une plateforme en Ligne de commandes pour des rendez-vous permettant de rendre la prise de
 rendez-vous plus efficace pour les employés et les bénévoles de VaxTodo et Goodpeople.
 
 Note: Les sauvegardes dans le CSV sont effectuées lorsqu'on quitte l'application.
